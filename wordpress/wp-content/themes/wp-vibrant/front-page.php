@@ -32,55 +32,75 @@
     </style>
     <div class="container">
       <div class="row">
-        <!-- Homepage Mission slider -->
+
+
+      <?php if( have_rows('main_slider') ): ?>
         <section class="mission-sldr nine col">
-          <div class="gallery-cell" style="background: url(<?php echo get_template_directory_uri(); ?>/img/Home2b1.jpg); background-size: cover;">
-            <div class="text">
-              <h2>OUR MISSION</h2>
-              <h3>Vibrant is Transforming Content Connections. We connect consumers with engaging and contextually relevant brand messages.</h3>
+          <?php while ( have_rows('main_slider') ) : the_row(); ?>
+            <?php $image = get_sub_field('img'); ?>
+            <div class="gallery-cell" <?php if ( !empty($image)) : ?> style="background-image: url('<?php echo $image['url']; ?>'); background-size: cover;"<?php endif; ?>>
+              <div class="text">
+                <h2><?php the_sub_field('title'); ?></h2>
+                <h3><?php the_sub_field('content'); ?></h3>
+              </div>
             </div>
-          </div>
-          <div class="gallery-cell" style="background: url(<?php echo get_template_directory_uri(); ?>/img/Home3b1.jpg); background-size: cover;">
-            <div class="text">
-              <h2>WHY VIBRANT?</h2>
-              <h3>We offer native, premium, viewable brand and programmatic solutions at scale.</h3>
-            </div>
-          </div>
-          <div class="gallery-cell" style="background: url(<?php echo get_template_directory_uri(); ?>/img/Home1b1.jpg); background-size: cover;">
-            <div class="text">
-              <h2>WHO ARE WE?</h2>
-              <h3>Vibrant is the original native player. We amplify branded content across a network of over 6,600 premium publishers.</h3>
-            </div>
-          </div>
+          <?php  endwhile; ?>
         </section>
+      <?php endif; ?>
+
+
         <!-- Left hand side buttons -->
+
+      <?php if( have_rows('side_buttons') ): ?>
+        <?php
+
+        $rows = get_field('side_buttons' );
+        $row1 = $rows[0];
+        $image1 = $row1['img'];
+        $title1 = $row1['title' ];
+        $content1 = $row1['content' ];
+        $link1 = $row1['link' ];
+
+        $row2 = $rows[1];
+        $image2 = $row2['img'];
+        $title2 = $row2['title' ];
+        $content2 = $row2['content' ];
+        $link2 = $row2['link' ];
+
+        ?>
+
+
         <section class="home-btns three col">
-          <a href="#your-needs/advertiser-agency/">
+          <a href="<?php echo $link1; ?>">
             <div class="btn hvr-btn green right" data-type="advertisers">
               <div class="text">
-                <h4>Are you an</h4>
-                <h2>Advertiser</h2>
+                <h4><?php echo $title1; ?></h4>
+                <h2><?php echo $content1; ?></h2>
               </div>
             </div>
           </a>
           <div class="btn img right mobile-none">
             <div class="hvr-img advertisers active">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/shutterstock_371016464-sized-down.jpg">
+              <img src="<?php echo $image1['url']; ?>">
             </div>
             <div class="hvr-img publishers">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/Publishers_thumb.jpg">
+              <img src="<?php echo $image2['url']; ?>">
             </div>
           </div>
-          <a href="#your-needs/publisher/">
+          <a href="<?php echo $link2; ?>">
             <div class="btn hvr-btn grey right last" data-type="publishers">
               <div class="text">
-                <h4>or a</h4>
-                <h2>Publisher</h2>
+                <h4><?php echo $title2; ?></h4>
+                <h2><?php echo $content2; ?></h2>
               </div>
             </div>
           </a>
         </section>
+      <?php endif; ?>
+
+
       </div>
+
       <!-- Homepage Products Slider -->
       <section class="prel six col ps">
         <h3 class="news-title1">Vibrant’s News &amp; Views!</h3>
