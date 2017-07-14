@@ -100,6 +100,8 @@ if (function_exists('add_theme_support')) {
   load_theme_textdomain('wpeasy', get_template_directory() . '/languages');
 }
 
+
+
 // WPE head navigation
 function wpeHeadNav() {
   wp_nav_menu(
@@ -116,10 +118,10 @@ function wpeHeadNav() {
     'before'          => '',
     'after'           => '',
     'link_before'     => '',
-    'link_after'      => the_post_thumbnail();,
+    'link_after'      => '',
     'items_wrap'      => '<ul id="menu-main-menu-american0" class="menu">%3$s</ul>',
     'depth'           => 0,
-    'walker'          => ''
+    'walker'          => new Main_Head_Walker_Menu
     )
   );
 }
@@ -752,8 +754,52 @@ function disable_emojicons_tinymce( $plugins ) {
 
 
 
+class mainMenuWalker extends Walker_Nav_Menu {
+  function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+    $class_names = join( ' ', $item->classes );
+    $class_names = ' class="' .esc_attr( $class_names ). '"';
+    $output.= '<li id="menu-item-' . $item->ID . '"' .$class_names. '>';
+    $attributes.= !empty( $item->url ) ? ' href="' .esc_attr($item->url). '"' : '';
+    $item_output = $args->before;
+    $current_url = (is_ssl()?'https://':'http://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $item_url = esc_attr( $item->url );
+    if ( $item_url != $current_url ) {
+      if ( ! is_front_page() ) {
+        $item_output.= '<a'. $attributes .'rel="nofollow">'.$item->title.'</a>';
+      }
+      else{
+        $item_output.= '<a'. $attributes .'>'.$item->title.'</a>';
+      }
+    }
+    else $item_output.= $item->title;
+    $item_output.= $args->after;
+    $output.= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+  }
+}
 
+//Добавить пустой блок div после li
+class Main_Head_Walker_Menu extends Walker_nav_menu {
+  public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+    $thumbnail = '';
+    if ( has_post_thumbnail( $item->object_id ) ) {
+      $thumbnail = get_the_post_thumbnail( $item->object_id );
+    }
+    if ( 1 == $depth ) {
+      $output .= "<div class='ithem__img'>".$thumbnail."</div></li>\n";
+    }
+    else if (in_array('menu-item-has-children', $item->classes)) {
+      $output .= "<div class='more icon'><div class='line hor'></div><div class='line ver'></div></div></li>\n";
+    }
+    else {
+      $output .= "</li>\n";
+    }
+  }
+}
 
-
+//in_array('menu-item-has-children', $item->classes)
+//убрать тег р от картинок
+function filter_del_p_of_img ($cntnt) {
+  return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $cntnt);
+}
 
 ?>
