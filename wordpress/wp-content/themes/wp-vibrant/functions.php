@@ -122,7 +122,7 @@ function wpeHeadNav() {
     'link_before'     => '',
     'link_after'      => '',
     'items_wrap'      => '<ul id="menu-main-menu-american0" class="menu">%3$s</ul>',
-    'depth'           => 0,
+    'depth'           => 2,
     'walker'          => new Main_Head_Walker_Menu
     )
   );
@@ -566,7 +566,7 @@ function easy_breadcrumbs() {
                 echo $parents;
 
                 // Current page
-                echo '<li class="item-current item-' . $post->ID . '"></li>';
+                echo '<li class="item-current item-' . $post->ID . '">' . get_the_title() . '</li>';
 
             } else {
 

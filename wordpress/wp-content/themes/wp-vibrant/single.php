@@ -1,34 +1,56 @@
 <?php get_header(); ?>
 
   <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-      <h1 class="single-title inner-title"><?php the_title(); ?></h1>
-      <?php if ( has_post_thumbnail()) :?>
-        <a class="single-thumb" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-          <?php the_post_thumbnail(); // Fullsize image for the single post ?>
-        </a>
-      <?php endif; ?><!-- /post thumbnail -->
+    <?php edit_post_link(); ?>
+    <div class="loading-wrapper">
+      <div class="single-img-header">
+        <div class="container">
+          <div class="row">
+            <div class="feat-img nine col">
+              <?php if ( has_post_thumbnail()) :?>
+                  <?php the_post_thumbnail();  ?>
+              <?php endif; ?>
+            </div>
+            <div class="meta three col">
+              <div class="kudos fontelico-emo-shoot" data-amount="6" data-url="http://www.vibrantmedia.com/blog/tech-talk-thursday-3/" data-id="0" data-status="beta"></div>
+              <!-- <div class="appreciate">
+                  <h5 id='vote_counter'>0</h5>
+                      <a class="user_vote" data-nonce="e8dcae63c4" data-post_id="6543">
+                          <h4 data-content="Appreciate">Appreciate</h4>
+                      </a>
+                  </div> -->
+              <div class="categories">
+                <ul>
+                  <li><?php the_time('d F Y'); ?></li>
+                </ul>
+              </div>
 
-      <span class="date"><?php the_time('d F Y'); ?> <?php the_time('H:i'); ?></span>
-      <span class="author"><?php _e( 'Published by', 'wpeasy' ); ?> <?php the_author_posts_link(); ?></span>
-      <span class="comments"><?php comments_popup_link( __( 'Leave your thoughts', 'wpeasy' ), __( '1 Comment', 'wpeasy' ), __( '% Comments', 'wpeasy' )); ?></span><!-- /post details -->
+              <div class="share">
+                <p>Share this page on <a target="_blank" href="#">Facebook</a> | <a target="_blank" href="#">Twitter</a></p>
+              </div>
 
-      <?php the_content(); ?>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <?php the_tags( __( 'Tags: ', 'wpeasy' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
+      <div class="container">
+        <div class="row">
+          <article  id="post-<?php the_ID(); ?>" <?php post_class('article single nine col'); ?>>
+            <?php easy_breadcrumbs(); ?>
 
-      <p><?php _e( 'Categorised in: ', 'wpeasy' ); the_category(', '); // Separated by commas ?></p>
+            <h1><?php the_title(); ?></h1>
+            <?php the_content(); ?>
 
-      <p><?php _e( 'This post was written by ', 'wpeasy' ); the_author(); ?></p>
+          </article>
+          <?php get_sidebar(); ?>
+        </div>
+      </div>
+    </div>
 
-      <?php edit_post_link(); ?>
-
-      <?php comments_template(); ?>
-
-    </article>
   <?php endwhile; endif; ?>
 
-  <?php get_sidebar(); ?>
+
 
 <?php get_footer(); ?>
