@@ -19,6 +19,7 @@
 //@import 'import/print';
 
 
+
 @import 'main-menu';
 
 @import 'language-selector';
@@ -26,3 +27,13 @@
 @import 'flickity';
 @import 'responsive-tabs';
 @import 'fonts';
+
+
+*::selection {
+  color: #b8d62f;
+  background: transparent;
+}
+*::-moz-selection {
+  color: #b8d62f;
+  background: transparent;
+}
