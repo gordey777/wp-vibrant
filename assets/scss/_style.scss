@@ -2833,37 +2833,7 @@ body {
   &.press_articles .footer {
     background-color: #f5f5f5;
   }
-  &.blog .footer .menus li.menu-item:first-child a,
-  &.press-articles .footer .menus li.menu-item:first-child a,
-  &.vibrant-blog .footer .menus li.menu-item:first-child a,
-  &.events .footer .menus li.menu-item:first-child a,
-  &.index .footer .menus li.menu-item:first-child a,
-  &.light .footer .menus li.menu-item:first-child a,
-  &.news .footer .menus li.menu-item:first-child a,
-  &.post .footer .menus li.menu-item:first-child a,
-  &.event .footer .menus li.menu-item:first-child a,
-  &.press-article .footer .menus li.menu-item:first-child a,
-  &.press_articles .footer .menus li.menu-item:first-child a {
-    color: #6b6b6b;
-  }
-  &.blog .footer .menus li.menu-item a,
-  &.press-articles .footer .menus li.menu-item a,
-  &.vibrant-blog .footer .menus li.menu-item a,
-  &.events .footer .menus li.menu-item a,
-  &.index .footer .menus li.menu-item a,
-  &.news .footer .menus li.menu-item a,
-  &.light .footer .menus li.menu-item a,
-  &.post .footer .menus li.menu-item a,
-  &.event .footer .menus li.menu-item a,
-  &.press-article .footer .menus li.menu-item a,
-  &.press_articles .footer .menus li.menu-item a {
-    font-family: 'Gotham SSm A', 'Gotham SSm B';
-    font-size: 12.8px;
-    font-size: .8rem;
-    font-weight: 400;
 
-    color: #898989;
-  }
   &.blog .footer .copyrights,
   &.press-articles .footer .copyrights,
   &.vibrant-blog .footer .copyrights,
@@ -2936,31 +2906,7 @@ body {
   /* .row {
         padding: 0 20px;
     } */
-  .menus {
-    padding-bottom: 13px;
-    .col.menu {
-      width: 16%;
-      margin-bottom: 15px;
-    }
-    li.menu-item {
-      &:first-child {
-        margin-bottom: 10px;
-        a {
-          text-transform: uppercase;
 
-          color: #fff;
-        }
-      }
-      a {
-        font-family: 'Gotham SSm A', 'Gotham SSm B';
-        font-size: 12.8px;
-        font-size: .8rem;
-        font-weight: 400;
-
-        color: #898989;
-      }
-    }
-  }
   .copyrights {
     font-family: 'Gotham SSm A', 'Gotham SSm B';
     font-size: 12px;
@@ -4117,6 +4063,7 @@ article #breadcrumbs a,
 
 article #breadcrumbs,
 .article #breadcrumbs {
+  padding-left: 0;
   display: inline-block;
   li {
     display: inline-block;

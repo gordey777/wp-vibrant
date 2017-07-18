@@ -2,38 +2,11 @@
   <footer class="footer">
     <div class="container">
       <div class="row menus">
-        <div class="nine col">
-          <div class="col menu">
-            <div class="">
-              <ul id="" class="menu">
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/">About Us</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/careers/">Careers</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/careers/life-at-vibrant/">Life at Vibrant</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/careers/benefits-perks/">Benefits &amp; Perks</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/leadership/">Leadership</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/leadership/board-of-directors/">Board of Directors</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/history/">Vibrant’s History</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#about-us/who-we-are/">Who We Are</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col menu">
-            <div class="">
-              <ul id="" class="menu">
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#our-solutions/">Our Solutions</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#our-solutions/premium-advertising/">Premium Advertising</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#our-solutions/content-marketing/">Content Marketing Solutions</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#our-solutions/programmatic/">Contextual Programmatic</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col menu">
-            <div class="">
-              <ul id="" class="menu">
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#our-case-studies/">Our Case Studies</a></li>
-              </ul>
-            </div>
-          </div>
+        <?php wpeFootNav(); ?>
+<!--         <div class="nine col">
+
+
+
           <div class="col menu">
             <div class="">
               <ul id="" class="menu">
@@ -44,25 +17,9 @@
               </ul>
             </div>
           </div>
-          <div class="col menu">
-            <div class="">
-              <ul id="" class="menu">
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#contact-us/">Contact Us</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#privacy-policy/">Privacy Policy</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.networkadvertising.org/choices/">Opt-out</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col menu">
-            <div class="">
-              <ul id="" class="menu">
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#news/">News</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#news/vibrant-news/">Vibrant News</a></li>
-                <li id="" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#news/vibrant-blog/">Vibrant Blog</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
+        </div> -->
+
         <div class="one col spacer"></div>
         <div class="two col trade-logos dark">
           <ul>

@@ -46,13 +46,13 @@ add_action('init', 'wpeHeaderScripts'); // Add Scripts to wp_head
 function wpeHeaderScripts() {
   if (!is_admin()) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '1.12.4');
+    wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js#asyncload', array(), '1.12.4');
     wp_enqueue_script('jquery');
 
-    wp_register_script('jquery-migrate', '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js', array(), '3.0.0');
+    wp_register_script('jquery-migrate', '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js#asyncload', array(), '3.0.0');
     wp_enqueue_script('jquery-migrate');
 
-    wp_register_script('modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array(), '2.8.3');
+    wp_register_script('modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js#asyncload', array(), '2.8.3');
     wp_enqueue_script('modernizr');
 
     wp_deregister_script( 'jquery-form' );
@@ -63,6 +63,8 @@ function wpeHeaderScripts() {
 
   }
 }
+
+
 
 //  Remove wp_head() injected Recent Comment styles
 //  add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
@@ -142,7 +144,7 @@ function wpeFootNav() {
     'after'           => '',
     'link_before'     => '',
     'link_after'      => '',
-    'items_wrap'      => '<ul class="footernav">%3$s</ul>',
+    'items_wrap'      => '<ul class="footernav nine col">%3$s</ul>',
     'depth'           => 0,
     'walker'          => ''
     )
@@ -193,17 +195,17 @@ if (function_exists('register_sidebar')) {
     'after_title' => '</h6>'
   ));
   //  Define Sidebar Widget Area 2. If your want to display more widget - uncoment this
-  /*
+
   register_sidebar(array(
-    'name' => __('Блок виджетов #2', 'wpeasy'),
-    'description' => __('Description for this widget-area...', 'wpeasy'),
-    'id' => 'widgetarea2',
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'name' => __('Footer widgets', 'wpeasy'),
+    'description' => __('Footer widget-area for footer navigation', 'wpeasy'),
+    'id' => 'footer_widgets',
+    'before_widget' => '<div id="%1$s" class="col menu %2$s">',
     'after_widget' => '</div>',
-    'before_title' => '<h6>',
-    'after_title' => '</h6>'
+    'before_title' => '',
+    'after_title' => ''
   ));
-  */
+
 }
 
 //  Custom Excerpts
