@@ -119,98 +119,85 @@
           </div>
         </div>
       </section>
+
       <section class="six col trophy-cabinet small-sldr">
-        <div class="gallery-cell">
-          <div class="text">
-            <h4>Trophy Cabinet</h4>
-            <h3>VIBRANT INSPERIENCE</h3>
-            <p></p>
-            <h3>Immersive digital experiences to powerfully connect brands with people</h3>
-            <h3><a href="#our-solutions/premium-advertising/vibrant-insperience/">Find out more</a></h3>
-            <p></p>
-          </div>
-          <img width="4615" height="3461" src="<?php echo get_template_directory_uri(); ?>/img/vibrant-AR-mockup.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="vibrant-AR-mockup">
-          <div class="white-background"></div>
-        </div>
-        <div class="gallery-cell">
-          <div class="text">
-            <h4>Trophy Cabinet</h4>
-            <h3>NATIVE SOLUTIONS</h3>
-            <p></p>
-            <h3>Viewable, engaging solutions across all screens. Find out how we can help your brand</h3>
-            <p></p>
-          </div>
-          <img width="345" height="244" src="<?php echo get_template_directory_uri(); ?>/img/Mosiac.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Mosiac" srcset="<?php echo get_template_directory_uri(); ?>/img/Mosiac.jpg 345w, <?php echo get_template_directory_uri(); ?>/img/Mosiac-300x212.jpg 300w" sizes="(max-width: 345px) 100vw, 345px">
-          <div class="white-background"></div>
-        </div>
-        <div class="gallery-cell">
-          <div class="text">
-            <h4>Trophy Cabinet</h4>
-            <h3>CONTENT MARKETING</h3>
-            <p></p>
-            <h3>From Content distribution to Content curation and creation. See how Vibrant can help your brand </h3>
-            <p></p>
-          </div>
-          <img width="345" height="244" src="<?php echo get_template_directory_uri(); ?>/img/BrandCanvas.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="BrandCanvas" srcset="<?php echo get_template_directory_uri(); ?>/img/BrandCanvas.jpg 345w, <?php echo get_template_directory_uri(); ?>/img/BrandCanvas-300x212.jpg 300w" sizes="(max-width: 345px) 100vw, 345px">
-          <div class="white-background"></div>
-        </div>
-        <div class="gallery-cell">
-          <div class="text">
-            <h4>Trophy Cabinet</h4>
-            <h3>CONTEXTUAL PROGRAMMATIC</h3>
-            <p></p>
-            <h3>Private, global exchange of 6600 premiums publishers. Start automating your campaigns today.</h3>
-            <p></p>
-          </div>
-          <img width="5250" height="3188" src="<?php echo get_template_directory_uri(); ?>/img/tablet-rm2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="tablet-rm2">
-          <div class="white-background"></div>
-        </div>
+        <?php if( have_rows('small_slider') ): ?>
+          <?php while ( have_rows('small_slider') ) : the_row(); ?>
+            <?php $image = get_sub_field('img'); ?>
+            <?php $link = get_sub_field('link'); ?>
+            <div class="gallery-cell">
+              <div class="text">
+                <h3><?php the_sub_field('title'); ?></h3>
+                <h3><?php the_sub_field('content'); ?></h3>
+                <?php if ( !empty($link)) { ?>
+                <h3><a href="#our-solutions/premium-advertising/vibrant-insperience/">Find out more</a></h3>
+                <?php } ?>
+              </div>
+              <?php if ( !empty($image)) { ?>
+                <img src="<?php echo $image['sizes']['medium']; ?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">
+              <?php } ?>
+              <div class="white-background"></div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
       </section>
+
       <div class="slider-wrapper six col">
         <span class="icon-facebook fixed-icon"></span>
         <section class="twelve col social-sldr facebook-sldr small-sldr">
+          <?php if( have_rows('fb_slider') ): ?>
+            <?php while ( have_rows('fb_slider') ) : the_row(); ?>
+              <?php $image = get_sub_field('img'); ?>
+              <?php $link = get_sub_field('link'); ?>
+              <?php $slide_class = 'no-image'; ?>
+              <div class="gallery-cell <?php echo $slide_class; ?>">
+                <div class="text">
+                  <p class="meta"><?php the_sub_field('data'); ?></p>
+                  <h3 class="tweet"><?php the_sub_field('content'); ?></h3>
+                </div>
+                <?php if ( !empty($image)) {
+                  $slide_class = 'image'; ?>
+                  <img src="<?php echo $image['sizes']['medium']; ?>">
+                <?php } ?>
+              </div>
+            <?php  endwhile; ?>
+          <?php endif; ?>
         </section>
       </div>
+
       <div class="slider-wrapper six col">
         <span class="icon-twitter fixed-icon"></span>
         <section class="twelve col social-sldr twitter-sldr small-sldr">
-          <div class="gallery-cell no-image">
-            <div class="text">
-              <p class="meta">2 days ago </p>
-              <h3 class="tweet">Is Immersive VR The Future Of Advertising? Find out by downloading our free whitepaper today.… htt...</h3>
-            </div>
-          </div>
-          <div class="gallery-cell image">
-            <div class="text">
-              <p class="meta">6 days ago </p>
-              <h3 class="tweet">RT <span class="link mention">@EDAATweets</span>: Yes! Congratulations to <span class="link mention">@VibrantMedia</span> for renewing its <span class="link hashtag">#trust</span> seal w/ <span class="link mention">@ABC_UK</span> https:...</h3>
-            </div>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/DD-QdLkW0AA-dgL.jpg">
-          </div>
-          <div class="gallery-cell no-image">
-            <div class="text">
-              <p class="meta">6 days ago </p>
-              <h3 class="tweet">RT <span class="link mention">@VibrantMediaUK</span>: Vibrant's Hamburg team had a lot of fun at the Golf Lounge yesterday! Thanks to ...</h3>
-            </div>
-          </div>
-          <div class="gallery-cell no-image">
-            <div class="text">
-              <p class="meta">1 week ago </p>
-              <h3 class="tweet">RT <span class="link mention">@VR360_news</span>: Research by <span class="link mention">@VibrantMedia</span> shows that the need for additional apps and hardware = big...</h3>
-            </div>
-          </div>
-          <div class="gallery-cell no-image">
-            <div class="text">
-              <p class="meta">1 week ago </p>
-              <h3 class="tweet">RT <span class="link mention">@DCNorg</span>: Direct buys and non-blind programmatic need context to solve brand safety <span class="link mention">@VibrantMedia</span> ...</h3>
-            </div>
-          </div>
+          <?php if( have_rows('twitter_slider') ): ?>
+            <?php while ( have_rows('twitter_slider') ) : the_row(); ?>
+              <?php $image = get_sub_field('img'); ?>
+              <?php $slide_class = 'no-image'; ?>
+              <?php if ( !empty($image)) {
+                $slide_class = 'image'; ?>
+              <?php } ?>
+              <?php $link = get_sub_field('link'); ?>
+
+              <div class="gallery-cell <?php echo $slide_class; ?>">
+                <div class="text">
+                  <p class="meta"><?php the_sub_field('data'); ?></p>
+                  <h3 class="tweet"><?php the_sub_field('content'); ?></h3>
+                </div>
+                <?php if ( !empty($image)) { ?>
+
+                  <img src="<?php echo $image['sizes']['medium']; ?>">
+                <?php } ?>
+              </div>
+            <?php  endwhile; ?>
+          <?php endif; ?>
         </section>
       </div>
+
       <div class="row">
         <section class="brands wrapper">
         </section>
       </div>
+
+
       <div class="row">
         <section class="feed">
           <div class="feed-title twelve col">Latest news</div>

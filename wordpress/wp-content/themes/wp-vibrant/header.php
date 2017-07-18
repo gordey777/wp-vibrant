@@ -44,7 +44,19 @@
     </style>
 </head>
 
-<body <?php body_class( 'page'); ?>>
+<?php
+$body___class = '';
+$cat_arr = array(9, 11, 10); //ID categories of light theme
+
+if ( is_category( $cat_arr ) || in_category( $cat_arr ) || post_is_in_descendant_category( $cat_arr ) ) {
+    $body___class = 'light';
+ }
+else {
+  $body___class = 'dark';
+} ?>
+
+
+<body <?php body_class( $body___class ); ?>>
   <div class="header-nav">
     <div class="nav-container container">
       <div class="row">

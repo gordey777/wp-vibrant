@@ -114,9 +114,10 @@
   </footer>
 
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+
+<?php wp_footer(); ?>
+
+
   <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.responsiveTabs.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/flickity.pkgd.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/moment.js"></script>
@@ -166,13 +167,9 @@
   /* ]]> */
   </script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/sitepress.js"></script>
-</body>
-
-</html>
 
 
 
-    <?php wp_footer(); ?>
 
 </body>
 </html>

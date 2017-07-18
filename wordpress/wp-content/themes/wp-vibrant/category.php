@@ -6,5 +6,5 @@
     <?php get_template_part('pagination'); ?>
 
   </article>
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>
