@@ -9,106 +9,68 @@
     <div class="container">
       <div class="row">
 
-      <article  id="post-<?php the_ID(); ?>" <?php post_class('article eight col'); ?>>
-        <?php easy_breadcrumbs(); ?>
-
-        <h1><?php the_title(); ?></h1>
-        <?php the_content(); ?>
-
-      </article>
-
+        <article  id="post-<?php the_ID(); ?>" <?php post_class('article eight col'); ?>>
+          <?php easy_breadcrumbs(); ?>
+          <h1><?php the_title(); ?></h1>
+          <?php the_content(); ?>
+        </article>
 
         <div class="one col spacer"></div>
         <div class="three col clocks">
+          <?php if( have_rows('adresses') ): ?>
             <div class="clock-nav">
               <ul>
-                <li class="city-abbrv active" data-address="Україна Вінниця вул. Ак. Янгеля, 58">Ua</li>
-                  <li class="city-abbrv" data-address="Vibrant Media Inc.
-    650 California Street, San Francisco, CA, 94108 United States
-    T: +1 415 321 6060
-    ">SF</li>
-                  <li class="city-abbrv" data-address="Vibrant Media Inc.
-    501 Santa Monica Boulevard, Suite 501 Santa Monica, CA 90401
-    United States
-    T: +1 424 268 9000
-    ">LA</li>
+                <?php $i = 0;
+                while ( have_rows('adresses') ) : the_row();
+                  $active___class = '';
+                  if ($i == 0){
+                  $active___class = 'active';
+                  } ?>
+                  <li class="city-abbrv <?php echo $active___class; ?>" data-address="<?php the_sub_field('map_adress'); ?>">
+                    <?php the_sub_field('tab_title'); ?>
+                  </li>
+                <?php $i++;
+                endwhile; ?>
               </ul>
             </div>
-          <div class="clock-main">
-            <div data-timezone="Europe/Kiev" class="city gallery-cell twelve col">
-              <h3>Vinnycia</h3>
-              <div class="clock-face four col">
-                <div class="clock">
-                  <div class="hand hour"></div>
-                  <div class="hand minute"></div>
+            <div class="clock-main">
+              <?php while ( have_rows('adresses') ) : the_row(); ?>
+                <div data-timezone="<?php the_sub_field('time_zone'); ?>" class="city gallery-cell twelve col">
+                  <h3><?php the_sub_field('title'); ?></h3>
+                  <div class="clock-face four col">
+                    <div class="clock">
+                      <div class="hand hour"></div>
+                      <div class="hand minute"></div>
+                    </div>
+                    <p class="time">00:00</p>
+                  </div>
+                  <div class="text six col">
+                    <?php the_sub_field('cont_adress'); ?>
+                  </div>
                 </div>
-                <p class="time">00:00</p>
-              </div>
-              <div class="text six col">
-                <p><strong>Vibrant Media Inc.</strong>
-                  <br> Soborna Street, 42
-                  <br> 12th Floor
-                  <br> Vinnicya, 21000
-                  <br> T: +1 646 312-6100</p>
-              </div>
+              <?php  endwhile; ?>
             </div>
-            <div data-timezone="America/Los_Angeles" class="city gallery-cell twelve col">
-              <h3>San Francisco</h3>
-              <div class="clock-face four col">
-                <div class="clock">
-                  <div class="hand hour"></div>
-                  <div class="hand minute"></div>
-                </div>
-                <p class="time">00:00</p>
-              </div>
-              <div class="text six col">
-                <p><strong>Vibrant Media Inc.<br>
-</strong>650 California Street, San Francisco, CA, 94108 United States
-                  <br> T: +1&nbsp;415 321 6060</p>
-              </div>
-            </div>
-            <div data-timezone="America/Los_Angeles" class="city gallery-cell twelve col">
-              <h3>Los Angeles</h3>
-              <div class="clock-face four col">
-                <div class="clock">
-                  <div class="hand hour"></div>
-                  <div class="hand minute"></div>
-                </div>
-                <p class="time">00:00</p>
-              </div>
-              <div class="text six col">
-                <p><strong>Vibrant Media Inc.<br>
-</strong>501 Santa Monica Boulevard, Suite 501 Santa Monica, CA 90401
-                  <br> United States
-                  <br> T: +1 424 268 9000</p>
-              </div>
-            </div>
-          </div>
-
+          <?php endif; ?>
         </div>
       </div>
+
       <div class="row">
         <div id="map-canvas" class="twelve col"></div>
       </div>
+
       <div class="row">
         <div class="accordion-wrapper">
 
-
           <div class="row single-accordion">
             <h2 class="accordion-title">
-                    Vibrant Offices Worldwide
-                    <div class="tooltip-wrapper">
-                        <div class="show-txt txt">
-                            Open
-                        </div>
+              Vibrant Offices Worldwide
+              <div class="tooltip-wrapper">
+                  <div class="show-txt txt">Open</div>
+                  <div class="hide-txt txt">Close</div>
+              </div>
+              <span class="icon-arrow-down"></span>
+            </h2>
 
-                        <div class="hide-txt txt">
-                            Close
-                        </div>
-                    </div>
-
-                    <span class="icon-arrow-down"></span>
-                </h2>
             <div class="text">
               <div class="row">
                 <div class="two col">
