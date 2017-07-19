@@ -3,7 +3,7 @@
   <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 <?php edit_post_link(); ?>
-<div class="loading-wrapper">
+  <div class="loading-wrapper">
     <div class="container">
       <div class="row">
         <article  id="post-<?php the_ID(); ?>" <?php post_class('article nine col'); ?>>

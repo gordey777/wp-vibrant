@@ -402,6 +402,8 @@ $(document).ready(function() {
 
   //Google Map
   if ($('body').hasClass('contact-us') == true) {
+    //Google Map
+
     function initialize() {
       var styles = [{
         "featureType": "water",
@@ -497,18 +499,12 @@ $(document).ready(function() {
 
       var url = window.location.href;
 
-      if (url.indexOf("/en/") >= 1) { //UK
-        var countryLat = "51.51955390000001";
-        var countryLng = "-0.09739639999999999";
-      } else {
-        if (url.indexOf("/de/") >= 1) { //Germany
-          var countryLat = "53.5507328";
-          var countryLng = "9.9886564";
-        } else { //USA
-          var countryLat = "40.756172";
-          var countryLng = "-73.978562";
-        }
-      }
+
+
+
+      var countryLat = "0";
+      var countryLng = "0";
+
 
 
       var mapOptions = {
@@ -565,6 +561,9 @@ $(document).ready(function() {
       });
 
     });
+
+
+
   }
 
 

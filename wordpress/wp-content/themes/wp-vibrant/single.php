@@ -13,12 +13,17 @@
               <?php endif; ?>
             </div>
             <div class="meta three col">
-              <div class="kudos fontelico-emo-shoot" data-amount="6" data-url="http://www.vibrantmedia.com/blog/tech-talk-thursday-3/" data-id="0" data-status="beta"></div>
+              <div class="kudos" data-amount="0" data-url="<?php the_permalink(); ?>"></div>
               <!-- <div class="appreciate">
-                  <h5 id='vote_counter'>0</h5>
-                      <a class="user_vote" data-nonce="e8dcae63c4" data-post_id="6543">
+
+                                          <h5 id='vote_counter'>0</h5>
+
+
+                      <a class="user_vote" data-nonce="8e3bc3d4bb" data-post_id="6531">
                           <h4 data-content="Appreciate">Appreciate</h4>
                       </a>
+
+
                   </div> -->
               <div class="categories">
                 <ul>
@@ -27,7 +32,7 @@
               </div>
 
               <div class="share">
-                <p>Share this page on <a target="_blank" href="#">Facebook</a> | <a target="_blank" href="#">Twitter</a></p>
+<p>Share this page on <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=<?php the_permalink(); ?>/&amp;p[title]=<?php the_title(); ?>&amp;p[summary]=<?php wpeExcerpt('wpeExcerpt40'); ?>">Facebook</a> | <a target="_blank" href="https://twitter.com/home?status=<?php the_permalink(); ?>">Twitter</a></p>
               </div>
 
             </div>
