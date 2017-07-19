@@ -150,9 +150,15 @@
               <?php $image = get_sub_field('img'); ?>
               <?php $link = get_sub_field('link'); ?>
               <?php $slide_class = 'no-image'; ?>
+              <?php $days = human_time_diff( strtotime( get_sub_field('data') ), current_time('timestamp')) . ' ago'; ?>
+              <?php if ( !empty($image)) {
+                $slide_class = 'image'; ?>
+              <?php } ?>
+              <?php $link = get_sub_field('link'); ?>
+
               <div class="gallery-cell <?php echo $slide_class; ?>">
                 <div class="text">
-                  <p class="meta"><?php the_sub_field('data'); ?></p>
+                  <p class="meta"><?php echo $days; ?></p>
                   <h3 class="tweet"><?php the_sub_field('content'); ?></h3>
                 </div>
                 <?php if ( !empty($image)) {
@@ -172,6 +178,8 @@
             <?php while ( have_rows('twitter_slider') ) : the_row(); ?>
               <?php $image = get_sub_field('img'); ?>
               <?php $slide_class = 'no-image'; ?>
+
+              <?php $days = human_time_diff( strtotime( get_sub_field('data') ), current_time('timestamp')) . ' ago'; ?>
               <?php if ( !empty($image)) {
                 $slide_class = 'image'; ?>
               <?php } ?>
@@ -179,7 +187,7 @@
 
               <div class="gallery-cell <?php echo $slide_class; ?>">
                 <div class="text">
-                  <p class="meta"><?php the_sub_field('data'); ?></p>
+                  <p class="meta"><?php echo $days; ?></p>
                   <h3 class="tweet"><?php the_sub_field('content'); ?></h3>
                 </div>
                 <?php if ( !empty($image)) { ?>
