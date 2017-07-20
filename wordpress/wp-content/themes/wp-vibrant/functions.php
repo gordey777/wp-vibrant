@@ -186,17 +186,17 @@ function register_html5_menu() {
 if (function_exists('register_sidebar')) {
   //  Define Sidebar Widget Area 1
   register_sidebar(array(
-    'name' => __('Блок виджетов #1', 'wpeasy'),
-    'description' => __('Description for this widget-area...', 'wpeasy'),
-    'id' => 'widgetarea1',
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => '</div>',
-    'before_title' => '<h6>',
-    'after_title' => '</h6>'
+    'name' => __('Sidebar', 'wpeasy'),
+    'description' => __('Sidebar widget-area...', 'wpeasy'),
+    'id' => 'sidebar_widgetarea',
+    'before_widget' => '<section id="%1$s" class="feed s-module widget %2$s">',
+    'after_widget' => '</section>',
+    'before_title' => '<h2>',
+    'after_title' => '</h2>'
   ));
   //  Define Sidebar Widget Area 2. If your want to display more widget - uncoment this
 
-  register_sidebar(array(
+/*  register_sidebar(array(
     'name' => __('Footer widgets', 'wpeasy'),
     'description' => __('Footer widget-area for footer navigation', 'wpeasy'),
     'id' => 'footer_widgets',
@@ -204,7 +204,7 @@ if (function_exists('register_sidebar')) {
     'after_widget' => '</div>',
     'before_title' => '',
     'after_title' => ''
-  ));
+  ));*/
 
 }
 

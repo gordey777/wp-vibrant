@@ -15,8 +15,8 @@
           <?php the_content(); ?>
         </article>
 
-        <div class="one col spacer"></div>
-        <div class="three col clocks">
+
+        <div class="four col clocks">
           <?php if( have_rows('adresses') ): ?>
             <div class="clock-nav">
               <ul>
