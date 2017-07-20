@@ -400,171 +400,7 @@ $(document).ready(function() {
   });
 
 
-  //Google Map
-  if ($('body').hasClass('contact-us') == true) {
-    //Google Map
 
-    function initialize() {
-      var styles = [{
-        "featureType": "water",
-        "stylers": [{
-          "color": "#545454"
-        }]
-      }, {
-        "featureType": "landscape.man_made",
-        "stylers": [{
-          "color": "#232323"
-        }]
-      }, {
-        "featureType": "landscape.natural.terrain",
-        "stylers": [{
-          "color": "#313131"
-        }]
-      }, {
-        "featureType": "poi.park",
-        "stylers": [{
-          "color": "#313131"
-        }]
-      }, {
-        "featureType": "road.arterial",
-        "stylers": [{
-          "color": "#0c0c0c"
-        }]
-      }, {
-        "featureType": "road.local",
-        "elementType": "geometry.fill",
-        "stylers": [{
-          "color": "#0c0c0c"
-        }]
-      }, {
-        "featureType": "road.local",
-        "elementType": "geometry.stroke",
-        "stylers": [{
-          "color": "#515151"
-        }]
-      }, {
-        "elementType": "labels.text.fill",
-        "stylers": [{
-          "color": "#b8d62f"
-        }]
-      }, {
-        "elementType": "labels.text.stroke",
-        "stylers": [{
-          "color": "#222222"
-        }]
-      }, {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [{
-          "color": "#626f2c"
-        }]
-      }, {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [{
-          "color": "#768531"
-        }]
-      }, {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#b8d62f"
-        }]
-      }, {
-        "featureType": "transit.station",
-        "elementType": "geometry.fill",
-        "stylers": [{
-          "color": "#2e2e2e"
-        }]
-      }, {
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [{
-          "color": "#2e2e2e"
-        }]
-      }, {
-        "elementType": "labels",
-        "stylers": [{
-          "visibility": "simplified"
-        }]
-      }, {
-        "featureType": "landscape.natural",
-        "stylers": [{
-          "color": "#313131"
-        }]
-      }]
-      var styledMap = new google.maps.StyledMapType(styles, {
-        name: "Styled Map"
-      });
-
-      var url = window.location.href;
-
-
-
-
-      var countryLat = "0";
-      var countryLng = "0";
-
-
-
-      var mapOptions = {
-        zoom: 15,
-        disableDefaultUI: true,
-        center: new google.maps.LatLng(countryLat, countryLng),
-        mapTypeControlOptions: {
-          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-        }
-      };
-
-      $map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-      $map.mapTypes.set('map_style', styledMap);
-      $map.setMapTypeId('map_style');
-
-
-      var image = 'http://www.vibrantmedia.com/wp-content/themes/vibrant-theme/library/images/vibrant_pin.png';
-      var myLatLng = new google.maps.LatLng(countryLat, countryLng);
-      $vibrant_pin = new google.maps.Marker({
-        position: myLatLng,
-        map: $map,
-        animation: google.maps.Animation.DROP,
-        icon: image
-      });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    //On click change map
-    $('.city-abbrv').click(function() {
-      $this = $(this);
-      $address = $this.data('address');
-      $address = $address.replace('Vibrant Media Inc.', '');
-      $address = $address.replace('Vibrant Media Ltd.', '');
-      $address = $address.split('T:')[0]
-
-      $geocodeAPI = "https://maps.googleapis.com/maps/api/geocode/json?address=" + $address + "&key=AIzaSyBaKtt9Z2NKexSoE8C1sIXWxygAUfx8j84";
-      $.getJSON($geocodeAPI, function(data) {
-        $lat = data['results'][0]['geometry']['location'].lat;
-        $lng = data['results'][0]['geometry']['location'].lng;
-
-        $vibrant_pin.setMap(null);
-
-        var image = 'http://www.vibrantmedia.com/wp-content/themes/vibrant-theme/library/images/vibrant_pin.png';
-        var myLatLng = new google.maps.LatLng($lat, $lng);
-        $vibrant_pin = new google.maps.Marker({
-          position: myLatLng,
-          map: $map,
-          animation: google.maps.Animation.DROP,
-          icon: image
-        });
-
-        $map.panTo(myLatLng);
-      });
-
-    });
-
-
-
-  }
 
 
   //On accordion click
@@ -669,7 +505,7 @@ $(document).ready(function() {
       }
     );
   }
-      //Open mobile menu
+  //Open mobile menu
   $('.mobile-menu-btn').click(function() {
     $this = $(this);
     $this.find('.lines-button').toggleClass('close');
@@ -696,6 +532,181 @@ $(document).ready(function() {
   //         $('.uber-img.'+$pageSlug).addClass('active');
   //     }
   // );
+
+
+
+
+  //Google Map
+  if ($('body').hasClass('contact-us') == true) {
+    //Google Map
+    //var $startLat = 0;
+    //var $startLng = 0;
+    //var countryLat = 0;
+    //var countryLng = 0;
+
+
+
+    function initialize() {
+      var styles = [{
+        "featureType": "water",
+        "stylers": [{
+          "color": "#545454"
+        }]
+      }, {
+        "featureType": "landscape.man_made",
+        "stylers": [{
+          "color": "#232323"
+        }]
+      }, {
+        "featureType": "landscape.natural.terrain",
+        "stylers": [{
+          "color": "#313131"
+        }]
+      }, {
+        "featureType": "poi.park",
+        "stylers": [{
+          "color": "#313131"
+        }]
+      }, {
+        "featureType": "road.arterial",
+        "stylers": [{
+          "color": "#0c0c0c"
+        }]
+      }, {
+        "featureType": "road.local",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#0c0c0c"
+        }]
+      }, {
+        "featureType": "road.local",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "color": "#515151"
+        }]
+      }, {
+        "elementType": "labels.text.fill",
+        "stylers": [{
+          "color": "#b8d62f"
+        }]
+      }, {
+        "elementType": "labels.text.stroke",
+        "stylers": [{
+          "color": "#222222"
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#626f2c"
+        }]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [{
+          "color": "#768531"
+        }]
+      }, {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [{
+          "color": "#b8d62f"
+        }]
+      }, {
+        "featureType": "transit.station",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#2e2e2e"
+        }]
+      }, {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [{
+          "color": "#2e2e2e"
+        }]
+      }, {
+        "elementType": "labels",
+        "stylers": [{
+          "visibility": "simplified"
+        }]
+      }, {
+        "featureType": "landscape.natural",
+        "stylers": [{
+          "color": "#313131"
+        }]
+      }]
+      var styledMap = new google.maps.StyledMapType(styles, {
+        name: "Styled Map"
+      });
+
+      var url = window.location.href;
+
+      $startAddress = $('.city-abbrv.active').data('address');
+      $geocodeAPI = "https://maps.googleapis.com/maps/api/geocode/json?address=" + $startAddress + "&key=AIzaSyBaKtt9Z2NKexSoE8C1sIXWxygAUfx8j84";
+      $.getJSON($geocodeAPI, function(data) {
+
+        var countryLat = data['results'][0]['geometry']['location'].lat;
+        var countryLng = data['results'][0]['geometry']['location'].lng;
+
+        var mapOptions = {
+          zoom: 15,
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(countryLat, countryLng),
+          mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          }
+        };
+
+        $map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        $map.mapTypes.set('map_style', styledMap);
+        $map.setMapTypeId('map_style');
+
+
+        var image = '/wp-content/themes/wp-vibrant/img/vibrant_pin.png';
+        var myLatLng = new google.maps.LatLng(countryLat, countryLng);
+        $vibrant_pin = new google.maps.Marker({
+          position: myLatLng,
+          map: $map,
+          animation: google.maps.Animation.DROP,
+          icon: image
+        });
+      });
+    }
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    //On click change map
+    $('.city-abbrv').click(function() {
+      $this = $(this);
+      $address = $this.data('address');
+      $address = $address.replace('Vibrant Media Inc.', '');
+      $address = $address.replace('Vibrant Media Ltd.', '');
+      $address = $address.split('T:')[0]
+
+      $geocodeAPI = "https://maps.googleapis.com/maps/api/geocode/json?address=" + $address + "&key=AIzaSyBaKtt9Z2NKexSoE8C1sIXWxygAUfx8j84";
+      $.getJSON($geocodeAPI, function(data) {
+        $lat = data['results'][0]['geometry']['location'].lat;
+        $lng = data['results'][0]['geometry']['location'].lng;
+
+        $vibrant_pin.setMap(null);
+
+        var image = '/wp-content/themes/wp-vibrant/img/vibrant_pin.png';
+        var myLatLng = new google.maps.LatLng($lat, $lng);
+        $vibrant_pin = new google.maps.Marker({
+          position: myLatLng,
+          map: $map,
+          animation: google.maps.Animation.DROP,
+          icon: image
+        });
+
+        $map.panTo(myLatLng);
+      });
+
+    });
+
+  }
 
 
 });
