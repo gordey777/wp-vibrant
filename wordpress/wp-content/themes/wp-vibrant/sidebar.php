@@ -28,10 +28,10 @@
 
   <?php if( have_rows('sidebar_link') ): ?>
     <?php while ( have_rows('sidebar_link') ) : the_row(); ?>
-      <a href="http://www.vibrantmedia.com/about-us/leadership/">
+      <a href="<?php the_sub_field('link'); ?>">
         <section class="more s-module">
-          <h4>Find out more about</h4>
-          <h2>Leadership</h2>
+          <h4><?php the_sub_field('title'); ?></h4>
+          <h2><?php the_sub_field('subtitle'); ?></h2>
         </section>
       </a>
     <?php  endwhile; ?>
