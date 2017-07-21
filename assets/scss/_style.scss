@@ -243,12 +243,24 @@ a.cookies_link {
     height: 541px;
 
     background-color: #facb26;
-    img {
+    .ps-img {
       position: absolute;
+      top: 40%;
       right: 0;
       bottom: 0;
+      left: 0;
 
-      max-height: 350px;
+      display: inline-block;
+      overflow: hidden;
+
+      background-position: center center;
+      background-size: cover;
+      img {
+        width: auto;
+        min-width: 100%;
+        height: auto;
+        min-height: 100%;
+      }
     }
     .text {
       padding: 17px 20px;
@@ -323,7 +335,8 @@ a.cookies_link {
 
 @media screen and (max-width: 850px) {
   .ps {
-    height: 270px;
+    height: auto;
+    min-height: 270px;
     padding: 0 30px;
 
     border-right: 0;
@@ -336,7 +349,8 @@ a.cookies_link {
     }
     .product-sldr {
       .gallery-cell {
-        height: 240px;
+        height: auto;
+        min-height: 240px;
         .text {
           width: 50%;
           padding: 17px 10px;
@@ -344,10 +358,9 @@ a.cookies_link {
             padding: 0;
           }
         }
-        img {
-          float: right;
-
-          width: 50%;
+        .ps-img {
+          top: 0;
+          left: 50%;
         }
       }
       .flickity-page-dots {
@@ -364,9 +377,12 @@ a.cookies_link {
     padding: 0 10px;
     .product-sldr .gallery-cell {
       height: 450px;
-      .text,
-      img {
+      .text {
         width: 100%;
+      }
+      .ps-img {
+        top: 50%;
+        left: 0;
       }
     }
   }
@@ -1950,11 +1966,14 @@ article .entry .title h2,
   position: absolute;
   z-index: 5;
   top: 99px;
+  right: 0;
   bottom: 0;
+  left: 0;
 
   overflow: hidden;
 
-  width: 100%;
+  margin: 0;
+  padding: 0;
   //margin-top: 99px;
 
   transition: all .4s ease-in-out;
@@ -4061,7 +4080,7 @@ article #breadcrumbs a,
 
 article #breadcrumbs,
 .article #breadcrumbs {
-  display: inline-block;
+  display: block;
 
   padding-left: 0;
   li {

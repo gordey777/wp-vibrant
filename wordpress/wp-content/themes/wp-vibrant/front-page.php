@@ -102,23 +102,35 @@
       </div>
 
       <!-- Homepage Products Slider -->
-      <section class="prel six col ps">
-        <h3 class="news-title1">Vibrant’s News &amp; Views!</h3>
-        <h4 class="news-sub1">Check out our latest press and blog posts.</h4>
-        <div class="product-sldr one-row">
-          <div class="gallery-cell ">
-            <img src="">
-            <div class="text">
-              <div class="post">
-                <h4>, Jun 21st, 2017</h4>
-                <h2><a href="#is-immersive-vr-future-of-advertising/">Is Immersive VR the Future of Advertising?</a></h2>
-                <p class="cat"><a href="#category/vibrant-news-2/">Vibrant News</a></p>
-                <p>Virtual Reality can rejuvenate advertising but it won’t solve every business problem, says report Advertising experiences in Virtual Reality (VR) and ...</p>
+      <?php
+
+      $posts = get_field('news_slider');
+
+      if( $posts ): ?>
+
+        <section class="prel six col ps">
+          <h3 class="news-title1">Vibrant’s News &amp; Views!</h3>
+          <h4 class="news-sub1">Check out our latest press and blog posts.</h4>
+          <div class="product-sldr one-row">
+            <?php foreach( $posts as $post): ?>
+              <?php setup_postdata($post); ?>
+              <div class="gallery-cell ">
+                <div class="text">
+                  <div class="post">
+                    <h4><?php the_time( 'j F Y'); ?></h4>
+                    <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                    <p class="cat"><?php the_category( ', '); ?></p>
+                    <?php wpeExcerpt('wpeExcerpt20'); ?>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div class="ps-img" <?php if ( has_post_thumbnail()) : ?> style="background-image: url('<?php echo the_post_thumbnail_url('medium'); ?>');" title="<?php the_title(); ?>"<?php endif; ?>></div>
+            <?php endforeach; ?>
           </div>
-        </div>
-      </section>
+        </section>
+        <?php wp_reset_postdata(); ?>
+      <?php endif; ?>
+
 
       <section class="six col trophy-cabinet small-sldr">
         <?php if( have_rows('small_slider') ): ?>
@@ -155,7 +167,6 @@
                 $slide_class = 'image'; ?>
               <?php } ?>
               <?php $link = get_sub_field('link'); ?>
-
               <div class="gallery-cell <?php echo $slide_class; ?>">
                 <div class="text">
                   <p class="meta"><?php echo $days; ?></p>
@@ -178,20 +189,17 @@
             <?php while ( have_rows('twitter_slider') ) : the_row(); ?>
               <?php $image = get_sub_field('img'); ?>
               <?php $slide_class = 'no-image'; ?>
-
               <?php $days = human_time_diff( strtotime( get_sub_field('data') ), current_time('timestamp')) . ' ago'; ?>
               <?php if ( !empty($image)) {
                 $slide_class = 'image'; ?>
               <?php } ?>
               <?php $link = get_sub_field('link'); ?>
-
               <div class="gallery-cell <?php echo $slide_class; ?>">
                 <div class="text">
                   <p class="meta"><?php echo $days; ?></p>
                   <h3 class="tweet"><?php the_sub_field('content'); ?></h3>
                 </div>
                 <?php if ( !empty($image)) { ?>
-
                   <img src="<?php echo $image['sizes']['medium']; ?>">
                 <?php } ?>
               </div>
@@ -205,37 +213,37 @@
         </section>
       </div>
 
-
-      <div class="row">
-        <section class="feed">
-          <div class="feed-title twelve col">Latest news</div>
-          <div class="feed-single three col">
-            <h4>Jul 4th, 2017</h4>
-            <h2><a href="#apps-accessories-biggest-barrier-vrar/">Apps and Accessories are Biggest Barrier to VR/AR</a></h2>
-            <p class="cat"><a href="#category/vibrant-news-2/">Vibrant News</a></p>
-            <p>A study of 3,000 consumers across the US, UK and Germany has revealed that the need for additional software, apps ...</p>
-          </div>
-          <div class="feed-single three col">
-            <h4>Jul 3rd, 2017</h4>
-            <h2><a href="#biggest-barriers-vr-take-apps-accessories/">Biggest barriers to VR take-up are apps and accessories</a></h2>
-            <p class="cat"><a href="#category/vibrant-news-2/">Vibrant News</a></p>
-            <p>Consumers say the need for additional software, apps and hardware is the greatest barrier preventing them from experiencing virtual reality ...</p>
-          </div>
-          <div class="feed-single three col">
-            <h4>Jul 3rd, 2017</h4>
-            <h2><a href="#exploring-destinations-considered-compelling-use-ar-vr-study-finds/">Exploring destinations considered most compelling use of AR and VR, study finds</a></h2>
-            <p class="cat"><a href="#category/vibrant-news-2/">Vibrant News</a></p>
-            <p>A study into people’s attitudes towards augmented reality and virtual reality has found exploring holiday destinations would be the most ...</p>
-          </div>
-          <div class="feed-single three col">
-            <h4>Jun 30th, 2017</h4>
-            <h2><a href="#73-attracted-vr-ads-relating-travel/">73% Attracted to VR Ads Relating To Travel</a></h2>
-            <p class="cat"><a href="#category/vibrant-news-2/">Vibrant News</a></p>
-            <p>When it comes to accessing advertising on virtual reality and augmented reality platforms, consumers say they want to experience travel ...</p>
-          </div>
-        </section>
-      </div>
+      <?php
+      $category_ids = array(10, 11, 9, 12); //ID categories of posts
+      $post_num = 4; //nuber of posts
+      $args=array(
+          'category__in'     => $category_ids,
+          'orderby'          => 'post_date',
+          'order'            => 'DESC',
+          'post__not_in'     => array($post->ID),
+          'showposts'        => $post_num,
+          'caller_get_posts' =>1
+        );
+      $my_query = new wp_query($args);
+      if( $my_query->have_posts() ) { ?>
+        <div class="row">
+          <section class="feed">
+            <div class="feed-title twelve col">Latest news</div>
+            <?php while ($my_query->have_posts()) {
+              $my_query->the_post(); ?>
+              <div class="feed-single three col">
+                <h4><?php the_time( 'j F Y'); ?></h4>
+                <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                <p class="cat"><?php the_category( ', '); ?></p>
+                <?php wpeExcerpt('wpeExcerpt20'); ?>
+              </div>
+            <?php } ?>
+          </section>
+        </div>
+      <?php }
+      wp_reset_query(); ?>
     </div>
+
     <div class="cookies-msg">
       <div class="close">
         <a id="close-cookies" href="##"><img src="<?php echo get_template_directory_uri(); ?>/img/cookies_close.png"></a>
