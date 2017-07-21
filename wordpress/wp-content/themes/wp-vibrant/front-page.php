@@ -123,8 +123,8 @@
                     <?php wpeExcerpt('wpeExcerpt20'); ?>
                   </div>
                 </div>
+                <div class="ps-img" <?php if ( has_post_thumbnail()) : ?> style="background-image: url('<?php echo the_post_thumbnail_url('medium'); ?>');" title="<?php the_title(); ?>"<?php endif; ?>></div>
               </div>
-              <div class="ps-img" <?php if ( has_post_thumbnail()) : ?> style="background-image: url('<?php echo the_post_thumbnail_url('medium'); ?>');" title="<?php the_title(); ?>"<?php endif; ?>></div>
             <?php endforeach; ?>
           </div>
         </section>

@@ -5,7 +5,7 @@
 <?php edit_post_link(); ?>
 
   <div class="loading-wrapper">
-    <div class="container">
+    <div class="container history">
 
       <?php if( get_field('title_image') ): ?>
         <div class="row">
