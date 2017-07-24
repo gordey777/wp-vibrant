@@ -242,7 +242,7 @@
         </div>
       <?php }
       wp_reset_query(); ?>
-    </div>
+    </div><!-- /.container -->
 
     <div class="cookies-msg">
       <div class="close">
